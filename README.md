@@ -1,1 +1,9 @@
-# looped_transformers
+# Looped Transformers
+
+Для начала стоит установить зависимости ```pip install -r requirements.txt```
+
+Запуск обучения - ```main.py``` или в ```experiments.ipynb```
+
+Анализ лежит в ```experiments.ipynb```. Все лоссы сохраняются в папку ```training_info```. Я добавил в репозиторий сами файлики с лоссами, в ноутбуке выводится информация именно из этих файлов. При желании можно самостоятельно запустить обучение и файлики обновятся.
+
+Выпоолнил: Васильев Павел, vasilievpavel4@gmail.com, tg: @Kurinaya_bulavka

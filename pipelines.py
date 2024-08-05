@@ -1,3 +1,5 @@
+import os
+
 import torch
 from tqdm import tqdm
 
@@ -93,7 +95,6 @@ def start_training(args, device):
     train_loader = get_data(batch_size=32, data_size=1000)
     val_loader = get_data(batch_size=32, data_size=200)
 
-    # Training loop
     losses = []
     gradients = []
     weight_norms = []
@@ -139,7 +140,7 @@ def start_training(args, device):
         'gradients': gradients,
         'gradient_norms': gradient_norms,
         'weight_norms': weight_norms
-    }, f'training_info_{args.name}.pt')
+    }, os.path.join('training_info', f'training_info_{args.name}.pt'))
 
 
 def compute_score(y_true, y_pred):
