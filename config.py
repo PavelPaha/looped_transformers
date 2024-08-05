@@ -1,4 +1,4 @@
-from transformers import TransformerModel, TransformerModelLooped, TransformerModelTying, TransformerModelResidualN, \
+from transformers import TransformerModel, TransformerModelLooped, TransformerModelTying, TransformerModelCutted, \
     CyclicBlockTransformer
 
 
@@ -22,7 +22,7 @@ def build_model(conf):
             n_loops=conf.n_loop_window
         )
     elif conf.family == 'gpt2_cutted':
-        model = TransformerModelResidualN(
+        model = TransformerModelCutted(
             n_dims=conf.n_dims,
             n_positions=conf.n_positions,
             n_embd=conf.n_embd,

@@ -153,11 +153,11 @@ class TransformerModelLooped(TransformerModel):
         return pred_list
 
 
-class TransformerModelResidualN(TransformerModel):
+class TransformerModelCutted(TransformerModel):
     def __init__(self, n_dims, n_positions, n_embd=128, n_layer=12, n_head=4, n_last_tokens=10,
                  num_positions_to_zero=10, loop_func='z=f(x+z)', pred_type='regression', n_loops=10):
-        super(TransformerModelResidualN, self).__init__(n_dims, n_positions, n_embd, n_layer, n_head, n_last_tokens,
-                                                        pred_type)
+        super(TransformerModelCutted, self).__init__(n_dims, n_positions, n_embd, n_layer, n_head, n_last_tokens,
+                                                     pred_type)
         self.loop_func = loop_func
         self.num_positions_to_zero = num_positions_to_zero
         self.n_loops = n_loops
