@@ -21,7 +21,7 @@ def build_model(conf):
             pred_type=conf.pred_type,
             n_loops=conf.n_loop_window
         )
-    elif conf.family == 'gpt2_residual_n':
+    elif conf.family == 'gpt2_cutted':
         model = TransformerModelResidualN(
             n_dims=conf.n_dims,
             n_positions=conf.n_positions,

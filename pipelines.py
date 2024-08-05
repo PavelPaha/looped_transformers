@@ -15,7 +15,7 @@ def train_step(args, model, xs, ys, optimizer, ctx, scaler):
         else:
             y_pred = model(xs, ys)
             loss = (ys - y_pred).square().mean()
-    elif args.model.family in ['gpt2_loop', 'gpt2_residual_n']:
+    elif args.model.family in ['gpt2_loop', 'gpt2_cutted']:
         if ctx is not None:
             with ctx:
                 y_pred_list = model(xs, ys)
@@ -129,7 +129,7 @@ def start_training(args, device):
         avg_losses.append(total_loss / len(train_loader))
 
         val_loss = evaluate(model, val_loader, device,
-                            use_looped_output=args.model.family in ['gpt2_loop', 'gpt2_residual_n'])
+                            use_looped_output=args.model.family in ['gpt2_loop', 'gpt2_cutted'])
         val_scores.append(val_loss)
 
     torch.save({

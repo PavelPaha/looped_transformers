@@ -11,7 +11,7 @@ class TransformerModel(nn.Module):
         self.freq = 2
         self.ind = 0
         configuration = GPT2Config()
-        configuration.block_size = self.freq * (n_positions + 1)  # +1 to account for xtest
+        configuration.block_size = self.freq * (n_positions + 1)  # +1 for xtest
         configuration.n_layer = n_layer
         configuration.n_head = n_head
         configuration.n_embd = n_embd
@@ -165,8 +165,6 @@ class TransformerModelResidualN(TransformerModel):
     def f(self, output, embeds):
         if self.loop_func == 'z=f(x+z)':
             f_output = self._backbone(inputs_embeds=output + embeds)
-        elif self.loop_func == 'z=f(x*z)':
-            f_output = self._backbone(inputs_embeds=output * embeds)
         else:
             raise NotImplementedError
         return f_output
